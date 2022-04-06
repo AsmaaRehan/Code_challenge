@@ -1,0 +1,19 @@
+{
+    "welcoming": "Welcome To VOIS NEWS Letter",
+    "Search": "Search",
+    "Error": "API Error",
+    "ErrorMsg": "something went wrong while fetcing data.",
+    "retry": "retry",
+    "cancel": "cancel",
+    "noDataFound": "No Data Found",
+    "seeMoreDetails": "See More Details",
+    "publishedAt": "Published At",
+    "News": "News",
+    "details": "Details",
+    "Settings": "Settings",
+    "Change": "Change",
+    "Light": "Light",
+    "Dark": "Dark",
+    "Theme": "Theme",
+    "Language": "Language"
+}
