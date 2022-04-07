@@ -4,61 +4,73 @@ import { useRoute } from "@react-navigation/native";
 import { newDetailsStyle } from '../styles/news_details_style';
 import { ThemeContext } from '../themes/themes';
 import { ThemeContsColors } from '../themes/colors'
+import axiosHooksApi from '../services/axios_hook_api';
 import { useTranslation } from "react-i18next";
+import { homeScreenStyles } from '../styles/home_screen_style';
+
 
 const NewsDetails = () => {
+
     let { params } = useRoute();
-    let article = params.article;
-    // let article = {
-    //     source: {
-    //         "id": "fox-news",
-    //         "name": "Fox News"
-    //     },
-    //     author: "Ryan Gaydos",
-    //     title: "Jack Nicklaus reacts to Tiger Woods' Masters plan: 'If his body holds up, could he do it again?' - Fox News",
-    //     description: "Tiger Woods hasn’t competed in a high-level golf event since the 2020 Masters.",
-    //     url: "https://www.foxnews.com/sports/jack-nicklaus-reacts-tiger-woods-masters",
-    //     urlToImage: "https://static.foxnews.com/foxnews.com/content/uploads/2022/04/Jack-Nicklaus-Tiger-Woods.jpg",
-    //     publishedAt: "2022-04-06T12:00:10Z",
-    //     content: "Tiger Woods intends to play at the Masters this week, more than a year after suffering devastating leg injuries in a car crash in Los Angeles.\r\nWoods made his intentions known Tuesday during a press … [+2360 chars]"
-    // };
+    let { t, i18n } = useTranslation()
     let { theme } = React.useContext(ThemeContext);
-    let [t, i18n] = useTranslation()
+    let article;
+    let articleId = parseInt(params.articleId);
+    let [{ data, loading, error }, refetch] = [{ data, loading, error }, refetch] = axiosHooksApi('', i18n.language);
+
+    if (!!params.articleId && data?.totalResults > articleId) {
+        article = data?.articles[articleId]
+    } else if (!!params.articleId && data?.totalResults < articleId) {
+        article = {}
+    } else {
+        article = params.article;
+    }
+
     return (
-        <ScrollView contentContainerStyle={newDetailsStyle(ThemeContsColors[theme]).viewBackground}>
-            <Text style={newDetailsStyle(ThemeContsColors[theme]).TitleStyle}>
-                {article.title}
-            </Text>
-            <Image
-                style={newDetailsStyle(ThemeContsColors[theme]).imageStyle}
-                source={{ uri: article?.urlToImage }}
-            />
 
-            <Text style={newDetailsStyle(ThemeContsColors[theme]).authorTextStyle}>
-                Author: {article.author}
-            </Text>
-
-            <Text style={newDetailsStyle(ThemeContsColors[theme]).contentTextStyle(18)}>
-                {article.content}
-            </Text>
-            <Text style={newDetailsStyle(ThemeContsColors[theme]).contentTextStyle(18)}>
-                {article.description}
-            </Text>
-            <Text style={
-                newDetailsStyle(ThemeContsColors[theme]).hyperLinkText
+        <View>
+            {!!params.articleId && !loading && (data?.totalResults == 0 || data?.totalResults < articleId) &&
+                <View style={homeScreenStyles(ThemeContsColors[theme]).noDataView}>
+                    <Text style={homeScreenStyles(ThemeContsColors[theme]).noDataTextView}>
+                        {t("noDataFound") + " " + t("for")}: {articleId}
+                    </Text>
+                </View>
             }
-                onPress={() => Linking.openURL(article.url)}>
-                {t("seeMoreDetails")}
-            </Text>
-
-            <Text style={newDetailsStyle(ThemeContsColors[theme]).contentTextStyle(12)}>
-                {t("publishedAt")} : {article.publishedAt}
-            </Text>
+            {!params.articleId && <ScrollView contentContainerStyle={newDetailsStyle(ThemeContsColors[theme]).viewBackground}>
 
 
 
-        </ScrollView >
+                <Text style={newDetailsStyle(ThemeContsColors[theme]).TitleStyle}>
+                    {article.title}
+                </Text>
+                <Image
+                    style={newDetailsStyle(ThemeContsColors[theme]).imageStyle}
+                    source={{ uri: article?.urlToImage }}
+                />
 
+                <Text style={newDetailsStyle(ThemeContsColors[theme]).authorTextStyle}>
+                    Author: {article.author}
+                </Text>
+
+                <Text style={newDetailsStyle(ThemeContsColors[theme]).contentTextStyle(18)}>
+                    {article.content}
+                </Text>
+                <Text style={newDetailsStyle(ThemeContsColors[theme]).contentTextStyle(18)}>
+                    {article.description}
+                </Text>
+                <Text style={
+                    newDetailsStyle(ThemeContsColors[theme]).hyperLinkText
+                }
+                    onPress={() => Linking.openURL(article.url)}>
+                    {t("seeMoreDetails")}
+                </Text>
+
+                <Text style={newDetailsStyle(ThemeContsColors[theme]).contentTextStyle(12)}>
+                    {t("publishedAt")} : {article.publishedAt}
+                </Text>
+            </ScrollView >}
+
+        </View>
 
 
 

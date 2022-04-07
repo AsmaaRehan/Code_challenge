@@ -46,5 +46,5 @@ export const newDetailsStyle = (theme) => StyleSheet.create({
         fontSize: scale(16),
         textDecorationLine: 'underline',
         color: 'blue'
-    }
+    },
 });

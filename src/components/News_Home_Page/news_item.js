@@ -17,7 +17,7 @@ const NewsItem = ({ article }) => {
             style={homeScreenStyles(ThemeContsColors[theme]).viewHomeStyle}
             onPress={() => {
                 navigate(routes.Details,
-                    { article: article.title }
+                    { article: article }
                 );
             }}>
             <View

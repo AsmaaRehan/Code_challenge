@@ -22,10 +22,11 @@ const NavigationScreens = () => {
                     path: "VOISNews"
                 },
                 Details: {
-                    path: 'details/:articleId'
-                }, Settings: {
-                    path: 'Settings'
-                }
+                    path: 'details/itemId/:articleId'
+                },
+                // Settings: {
+                //     path: 'Settings'
+                // }
             }
         }
     };

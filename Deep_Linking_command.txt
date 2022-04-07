@@ -1,1 +1,9 @@
-npx uri-scheme open code_challenge:// --android
+///To add line in ActivityMainfest
+npx uri-scheme add code_challenge --android    
+
+
+//To open to the intial route
+npx uri-scheme open code_challenge:// --android   
+ 
+//To get the details Page
+npx uri-scheme open code_challenge://details/itemId/2 --android

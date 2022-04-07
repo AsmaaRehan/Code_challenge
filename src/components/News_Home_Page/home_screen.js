@@ -2,7 +2,7 @@ import * as React from 'react';
 import {
     View, Text, TextInput,
     ActivityIndicator, FlatList,
-    ScrollView, Alert, RefreshControl
+    Alert, RefreshControl
 } from 'react-native';
 import { ThemeContext } from "../../themes/themes"
 import axiosHooksApi from "../../services/axios_hook_api"
@@ -10,11 +10,11 @@ import NewsItem from './news_item';
 import { ThemeContsColors } from '../../themes/colors';
 import { homeScreenStyles } from '../../styles/home_screen_style'
 import { useTranslation } from "react-i18next";
+
 const wait = (timeout) => {
     return new Promise(resolve => setTimeout(resolve, timeout));
 }
 const HomeScreen = () => {
-
     const { theme } = React.useContext(ThemeContext);
     const [searchTextInput, setSearchTextInput] = React.useState('');
     let { t, i18n } = useTranslation()

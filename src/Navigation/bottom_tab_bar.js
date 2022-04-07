@@ -29,7 +29,7 @@ const HomeBottomTabBarScreens = () => {
                 },
                 tabBarIcon: ({ focused, color, size }) => {
                     let iconName;
-                    if (route.name === routes.VOISNews) {
+                    if (route.name === routes.VOISNewsHome) {
                         iconName = focused
                             ? 'md-home'
                             : 'md-home-outline';
@@ -39,7 +39,7 @@ const HomeBottomTabBarScreens = () => {
                     return <Ionicons name={iconName} size={size} color={color} />;
                 },
             })}>
-            <Tab.Screen name={routes.VOISNews} component={HomeScreen} />
+            <Tab.Screen name={routes.VOISNewsHome} component={HomeScreen} />
             <Tab.Screen name={routes.Settings} component={SettingsScreen} />
         </Tab.Navigator>);
 }
