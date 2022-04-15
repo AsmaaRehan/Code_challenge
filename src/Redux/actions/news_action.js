@@ -1,6 +1,6 @@
 import { newsUrl } from "../../services/api_key";
 import axiosHooksApi from "../../services/axios_hook_api";
-import { News } from "../Reducers/action_type_const"
+import { News, NewsDetails } from "../Reducers/action_type_const"
 
 export const GetAllNewsData = async (searchWord, lang) => {
     var news, error, loading;
@@ -28,6 +28,31 @@ export const GetAllNewsData = async (searchWord, lang) => {
 
 
         }
+    }
+}
+
+export const GetNewsDetails = async (articleId, searchWord, lang) => {
+    var newsDetails = {}, error, loading;
+    try {
+        loading = true;
+        await fetch(`${newsUrl}&q=${searchWord}&language=${lang}`,
+        ).then((res) => { return res.json(); }).then((data) => {
+            if (data.totalResults > articleId) {
+                newsDetails = data.articles[articleId];
+
+            }
+        }).catch((e) => {
+            error = e;
+        }).finally(() => {
+            loading = false;
+        });
+    } catch (error) {
+        error = error;
+    }
+    return {
+        type: NewsDetails,
+        payload: newsDetails,
+
     }
 
 }

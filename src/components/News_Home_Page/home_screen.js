@@ -23,15 +23,12 @@ const HomeScreen = (props) => {
     const [refreshing, setRefreshing] = React.useState(false);
     const onRefresh = React.useCallback(() => {
         setRefreshing(true);
-        refetch();
+        props.GetAllNewsData(searchTextInput, i18n.language);
         wait(2000).then(() => setRefreshing(false));
     }, []);
 
     React.useEffect(() => {
         props.GetAllNewsData(searchTextInput, i18n.language);
-        console.log(!!props.NewsFeed?.data);
-        console.log(searchTextInput);
-        console.log(props.NewsFeed);
     }, [searchTextInput, i18n.language]);
 
     const renderItem = ({ item }) => {
@@ -46,7 +43,7 @@ const HomeScreen = (props) => {
                 {
                     text: t("retry")
                     ,
-                    onPress: () => refetch(),
+                    onPress: () => props.GetAllNewsData(searchTextInput, i18n.language),
                 },
                 {
                     text: t("cancel"),
