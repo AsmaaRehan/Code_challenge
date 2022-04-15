@@ -5,8 +5,6 @@ import { ThemeContsColors } from '../themes/colors'
 import { settingsStyle } from '../styles/settings_style'
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import { useTranslation } from "react-i18next";
-import { useNavigation } from '@react-navigation/native';
-import routes from '../Navigation/routes'
 
 const SettingsScreen = () => {
     const { theme, toggleTheme } = React.useContext(ThemeContext);
@@ -15,9 +13,7 @@ const SettingsScreen = () => {
         setIsEnabled(previousState => !previousState)
         toggleTheme()
     };
-
     let { t, i18n } = useTranslation()
-    let { navigate } = useNavigation();
 
     return (
         <View style={settingsStyle(ThemeContsColors[theme]).viewBackground}>

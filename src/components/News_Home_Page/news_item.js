@@ -25,10 +25,10 @@ const NewsItem = ({ article }) => {
                 <Text style={homeScreenStyles(ThemeContsColors[theme]).newsTitleHomeStyle}>
                     {article.title}
                 </Text>
-                <Image
+                {/* <Image
                     style={homeScreenStyles(ThemeContsColors[theme]).newsImageHomeStyle}
                     source={{ uri: article.urlToImage }}
-                />
+                /> */}
             </View>
         </Pressable>)
 }
