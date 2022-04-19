@@ -11,12 +11,24 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { GetAllNewsData } from '../../Redux/actions/news_action';
 import NewsItem from './news_item';
+import NewsDataType from '../../models/news_feed_datatype';
+import Article from '../../models/article_model';
 
 
-const wait = (timeout) => {
+interface Props {
+    GetAllNewsData: (searchWord: string, lang: string) => void
+    item: Article
+    NewsFeed: NewsDataType
+    NewsData: NewsDataType;
+
+
+}
+
+const wait = (timeout?: number) => {
     return new Promise(resolve => setTimeout(resolve, timeout));
 }
-const HomeScreen = (props) => {
+const HomeScreen = (props: Props) => {
+    // const { theme } = React.useContext<{ theme: string, toggleTheme: () => void }>(ThemeContext);
     const { theme } = React.useContext(ThemeContext);
     const [searchTextInput, setSearchTextInput] = React.useState('');
     let { t, i18n } = useTranslation();
@@ -28,10 +40,11 @@ const HomeScreen = (props) => {
     }, []);
 
     React.useEffect(() => {
+        console.log(props);
         props.GetAllNewsData(searchTextInput, i18n.language);
     }, [searchTextInput, i18n.language]);
 
-    const renderItem = ({ item }) => {
+    const renderItem = ({ item }: any) => {
         return (<NewsItem
             key={item.title}
             article={item}
@@ -82,7 +95,7 @@ const HomeScreen = (props) => {
 }
 
 
-let mapStateToProps = ({ NewsData }) => {
+let mapStateToProps = ({ NewsData }: Props) => {
     return { NewsFeed: NewsData }
 }
 export default connect(mapStateToProps, (dispatch) => {

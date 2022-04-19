@@ -10,10 +10,11 @@ import { ThemeContsColors } from '../themes/colors';
 import { useTranslation } from "react-i18next";
 
 const Stack = createNativeStackNavigator();
+
 const NavigationScreens = () => {
     const { theme } = React.useContext(ThemeContext);
     let [t, i18n] = useTranslation()
-    const linking = {
+    const deepLinking = {
         prefixes: ['code_challenge://'],
         config: {
             initialRouteName: 'VOISNews',
@@ -32,7 +33,7 @@ const NavigationScreens = () => {
     };
     return (
         <NavigationContainer
-            linking={linking}
+            linking={deepLinking}
 
         >
             <Stack.Navigator

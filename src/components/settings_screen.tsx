@@ -1,9 +1,8 @@
 import * as React from 'react'
-import { View, Text, Switch, StyleSheet } from 'react-native'
+import { View, Text, Switch, StyleSheet, Pressable } from 'react-native'
 import { ThemeContext } from '../themes/themes';
 import { ThemeContsColors } from '../themes/colors'
 import { settingsStyle } from '../styles/settings_style'
-import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import { useTranslation } from "react-i18next";
 
 const SettingsScreen = () => {
@@ -19,7 +18,7 @@ const SettingsScreen = () => {
         <View style={settingsStyle(ThemeContsColors[theme]).viewBackground}>
             <View style={settingsStyle(ThemeContsColors[theme]).rowViewStyle}>
                 <Text style={settingsStyle(ThemeContsColors[theme]).textStyle}>
-                    {t("Change")} {t(`${theme}`)}  {t("Theme")}:
+                    {t("Change")} {t(`${theme}`)} {t("Theme")}:
                 </Text>
                 <Switch
                     trackColor={{ false: ThemeContsColors[theme].secondaryColor, true: ThemeContsColors[theme].secondaryColor }}

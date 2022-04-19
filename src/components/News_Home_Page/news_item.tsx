@@ -7,8 +7,12 @@ import { useNavigation } from '@react-navigation/native';
 import { homeScreenStyles } from '../../styles/home_screen_style'
 import { ThemeContsColors } from '../../themes/colors';
 import { ThemeContext } from '../../themes/themes';
+import Article from '../../models/article_model';
 
-const NewsItem = ({ article }) => {
+interface Props {
+    article: Article
+}
+const NewsItem = ({ article }: Props) => {
     let { navigate } = useNavigation();
     const { theme } = React.useContext(ThemeContext);
     return (

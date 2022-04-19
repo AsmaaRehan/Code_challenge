@@ -3,7 +3,7 @@
 const routes = Object.freeze({
 
     VOISNews: "VOISNews", //Main Route
-    VOISNewsHome: "News", // Buttom Tab Bar route 
+    VOISNewsHome: "News", // Bottom Tab Bar route 
     Details: "Details",
     Settings: "Settings",
 

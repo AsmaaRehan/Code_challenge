@@ -7,3 +7,8 @@ npx uri-scheme open code_challenge:// --android
  
 //To get the details Page
 npx uri-scheme open code_challenge://details/itemId/2 --android
+
+
+/// To start Project With Type Script base 
+npx react-native init [AppName] --template react-native-template-typescript
+

@@ -1,7 +1,10 @@
 import React, { useState, createContext } from 'react';
+import ThemeModel from '../models/theme_model';
 
-export const ThemeContext = createContext();
-export const ThemeProvider = ({ children }) => {
+export const ThemeContext = createContext<{ theme: ThemeModel, toggleTheme: () => void }>(
+    { theme: {} as ThemeModel, toggleTheme: () => { } }
+);
+export const ThemeProvider = ({ children }: any) => {
 
     const [theme, setTheme] = useState('Light');
 

@@ -2,7 +2,7 @@ import { newsUrl } from "../../services/api_key";
 import axiosHooksApi from "../../services/axios_hook_api";
 import { News, NewsDetails } from "../Reducers/action_type_const"
 
-export const GetAllNewsData = async (searchWord, lang) => {
+export const GetAllNewsData = async (searchWord: string, lang: string) => {
     var news, error, loading;
 
     try {
@@ -10,6 +10,7 @@ export const GetAllNewsData = async (searchWord, lang) => {
         await fetch(`${newsUrl}&q=${searchWord}&language=${lang}`,
         ).then((res) => { return res.json(); }).then((data) => {
             news = data;
+
         }).catch((e) => {
             error = e;
         }).finally(() => {
@@ -31,7 +32,7 @@ export const GetAllNewsData = async (searchWord, lang) => {
     }
 }
 
-export const GetNewsDetails = async (articleId, searchWord, lang) => {
+export const GetNewsDetails = async (articleId: number, searchWord: string, lang: string) => {
     var newsDetails = {}, error, loading;
     try {
         loading = true;

@@ -3,7 +3,7 @@ import {
 } from 'react-native';
 import { scale } from 'react-native-size-matters';
 
-export const newDetailsStyle = (theme) => StyleSheet.create({
+export const newDetailsStyle = (theme: any) => StyleSheet.create({
 
     viewBackground: {
         backgroundColor: theme.backgroundColor,
@@ -33,7 +33,7 @@ export const newDetailsStyle = (theme) => StyleSheet.create({
         fontSize: scale(12),
         color: theme.TextColor,
     },
-    contentTextStyle: (size) => ({
+    contentTextStyle: (size: number) => ({
         alignSelf: "flex-start",
         fontSize: scale(size),
         margin: scale(5),

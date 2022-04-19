@@ -10,14 +10,22 @@ import { homeScreenStyles } from '../styles/home_screen_style';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { GetNewsDetails } from '../Redux/actions/news_action';
+import Article from '../models/article_model';
 
 
-const NewsDetails = (props) => {
+interface Props {
+    GetNewsDetails: (articleId: number, searchWord: string, lang: string) => void
+    NewsDetails: Article
+    ArticleDetails: Article
 
-    let { params } = useRoute();
+}
+const NewsDetails = (props: Props) => {
+
+
+    let { params }: any = useRoute();
     let { t, i18n } = useTranslation()
     let { theme } = React.useContext(ThemeContext);
-    let [article, setArticle] = React.useState({});
+    let [article, setArticle] = React.useState<Article>();
     let articleId = parseInt(params.articleId);
 
     React.useEffect(() => {
@@ -69,7 +77,7 @@ const NewsDetails = (props) => {
     )
 }
 
-let mapStateToProps = ({ NewsDetails }) => {
+let mapStateToProps = ({ NewsDetails }: Props) => {
     console.log("mapState TO PRop");
     console.log(NewsDetails?.author);
     return ({ ArticleDetails: NewsDetails });
