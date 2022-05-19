@@ -78,8 +78,7 @@ const NewsDetails = (props: Props) => {
 }
 
 let mapStateToProps = ({ NewsDetails }: Props) => {
-    console.log("mapState TO PRop");
-    console.log(NewsDetails?.author);
+
     return ({ ArticleDetails: NewsDetails });
 }
 export default connect(mapStateToProps, (dispatch) => {

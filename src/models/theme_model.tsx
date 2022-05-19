@@ -1,6 +1,10 @@
 interface ThemeModel {
-    Light: string,
-    Dark: string
+    Light: {},
+    Dark: {}
 }
+
+
+
+
 
 export default ThemeModel;

@@ -35,12 +35,13 @@ const HomeBottomTabBarScreens = () => {
                             : 'md-home-outline';
                     } else if (route.name === routes.Settings) {
                         iconName = focused ? 'settings' : 'settings-outline';
+
                     }
                     return <Ionicons name={iconName} size={size} color={color} />;
                 },
             })}>
             <Tab.Screen name={routes.VOISNewsHome} component={HomeScreen} />
             <Tab.Screen name={routes.Settings} component={SettingsScreen} />
-        </Tab.Navigator>);
+        </Tab.Navigator >);
 }
 export default HomeBottomTabBarScreens;

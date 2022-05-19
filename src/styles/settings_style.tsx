@@ -3,7 +3,7 @@ import {
 } from 'react-native';
 import { scale } from 'react-native-size-matters';
 
-export const settingsStyle = (theme) => StyleSheet.create({
+export const settingsStyle = (theme: any) => StyleSheet.create({
 
     viewBackground: {
         backgroundColor: theme.backgroundColor,
@@ -22,11 +22,9 @@ export const settingsStyle = (theme) => StyleSheet.create({
         padding: scale(5),
     },
     langBtnStyle: {
-        margin: scale(20),
-        padding: scale(50),
-        borderRadius: scale(15),
         margin: scale(10),
-        padding: (10),
+        padding: scale(10),
+        borderRadius: scale(15),
         backgroundColor: theme.primaryColor
 
     },

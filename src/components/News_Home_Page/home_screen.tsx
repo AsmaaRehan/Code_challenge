@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
-    View, Text, TextInput, FlatList, RefreshControl, Alert,
-    ActivityIndicator
+    View, Text, TextInput,
+    FlatList, RefreshControl, Alert, ActivityIndicator,
 } from 'react-native';
 import { ThemeContext } from "../../themes/themes"
 import { ThemeContsColors } from '../../themes/colors';
@@ -13,6 +13,7 @@ import { GetAllNewsData } from '../../Redux/actions/news_action';
 import NewsItem from './news_item';
 import NewsDataType from '../../models/news_feed_datatype';
 import Article from '../../models/article_model';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 interface Props {
@@ -20,15 +21,12 @@ interface Props {
     item: Article
     NewsFeed: NewsDataType
     NewsData: NewsDataType;
-
-
 }
 
 const wait = (timeout?: number) => {
     return new Promise(resolve => setTimeout(resolve, timeout));
 }
 const HomeScreen = (props: Props) => {
-    // const { theme } = React.useContext<{ theme: string, toggleTheme: () => void }>(ThemeContext);
     const { theme } = React.useContext(ThemeContext);
     const [searchTextInput, setSearchTextInput] = React.useState('');
     let { t, i18n } = useTranslation();
@@ -40,8 +38,8 @@ const HomeScreen = (props: Props) => {
     }, []);
 
     React.useEffect(() => {
-        console.log(props);
         props.GetAllNewsData(searchTextInput, i18n.language);
+        console.log(AsyncStorage);
     }, [searchTextInput, i18n.language]);
 
     const renderItem = ({ item }: any) => {
@@ -51,7 +49,9 @@ const HomeScreen = (props: Props) => {
         />)
     }
     return (
-        <View style={homeScreenStyles(ThemeContsColors[theme]).backgroundView} >
+        <View
+        // style={homeScreenStyles(ThemeContsColors[theme]).backgroundView}
+        >
             {props.NewsFeed?.error && Alert.alert(t("Error"), t("ErrorMsg"), [
                 {
                     text: t("retry")

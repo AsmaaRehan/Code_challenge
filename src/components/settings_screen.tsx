@@ -12,7 +12,7 @@ const SettingsScreen = () => {
         setIsEnabled(previousState => !previousState)
         toggleTheme()
     };
-    let { t, i18n } = useTranslation()
+    let { t, i18n } = useTranslation();
 
     return (
         <View style={settingsStyle(ThemeContsColors[theme]).viewBackground}>
@@ -46,6 +46,7 @@ const SettingsScreen = () => {
                 }
                 onPress={() => {
                     i18n.changeLanguage("de");
+
                 }}>
                 <Text style={settingsStyle(ThemeContsColors[theme]).langBtnTextStyle}>
                     Deutsch Sprache

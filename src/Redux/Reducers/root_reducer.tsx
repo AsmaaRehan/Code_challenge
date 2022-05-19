@@ -7,6 +7,6 @@ const RootReducer = combineReducers({
 
     NewsData: NewsReducer,
     NewsDetails: NewsDetailsReducer,
-})
+});
 
 export default RootReducer;

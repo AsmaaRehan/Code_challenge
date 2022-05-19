@@ -11,4 +11,5 @@ interface NewsDataType {
 }
 
 
+
 export default NewsDataType;

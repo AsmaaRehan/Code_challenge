@@ -33,9 +33,7 @@ const NavigationScreens = () => {
     };
     return (
         <NavigationContainer
-            linking={deepLinking}
-
-        >
+            linking={deepLinking}>
             <Stack.Navigator
                 initialRouteName={routes.VOISNews}
                 screenOptions={{

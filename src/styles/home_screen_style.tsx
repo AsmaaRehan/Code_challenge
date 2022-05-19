@@ -3,7 +3,7 @@ import {
 } from 'react-native';
 import { scale } from 'react-native-size-matters';
 
-export const homeScreenStyles = (theme) => StyleSheet.create({
+export const homeScreenStyles = (theme: any) => StyleSheet.create({
     header: {
         backgroundColor: theme.backgroundColor,
     },
@@ -19,7 +19,6 @@ export const homeScreenStyles = (theme) => StyleSheet.create({
         justifyContent: "center",
         backgroundColor: theme.primaryColor,
         color: theme.backgroundColor,
-        padding: scale(5)
     },
     viewHomeStyle: {
         flex: 1,

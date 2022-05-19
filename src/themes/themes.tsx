@@ -1,8 +1,7 @@
 import React, { useState, createContext } from 'react';
-import ThemeModel from '../models/theme_model';
 
-export const ThemeContext = createContext<{ theme: ThemeModel, toggleTheme: () => void }>(
-    { theme: {} as ThemeModel, toggleTheme: () => { } }
+export const ThemeContext = createContext<{ theme: {}, toggleTheme: () => void }>(
+    { theme: {}, toggleTheme: () => { } }
 );
 export const ThemeProvider = ({ children }: any) => {
 
